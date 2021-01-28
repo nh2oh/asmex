@@ -3,11 +3,8 @@ ExitProcess proto
 
 .code
 main proc
-mov rcx, 78
+mov rcx,rsp
 call ExitProcess
 main endp
 
 end
-
-
-
