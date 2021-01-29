@@ -1,3 +1,26 @@
 *.exe
 *.lib
 *.obj
+*.lnk
+
+
+# Build results
+build/
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio cache/options directory
+.vs/
