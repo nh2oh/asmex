@@ -1,5 +1,7 @@
 ; Similar to what is on p.89
 
+.data
+p_hex_digs byte "0123456789ABCDEF"
 
 .code
 
@@ -27,7 +29,30 @@ char2binascii proc
 char2binascii endp
 
 
-
+; rcx:  the value to print (will be truncated to a max of 8 bits)
+; rdx:  ptr to the first byte of the destination array
+; returns:  ptr to one byte past the last written in the dest array
+; (will always be 2 bytes away from the starting ptr passed in rcx)
+char2hexascii proc
+	push rbx  ; once again not using the shadow space
+	lea rbx, p_hex_digs
+	
+	mov rax, rcx
+	shr al, 4
+	xlat
+	mov [rdx], al
+	inc rdx
+	
+	mov rax, rcx
+	and al, 1111b
+	xlat
+	mov [rdx], al
+	inc rdx
+	
+	mov rax, rdx
+	pop rbx
+	ret
+char2hexascii endp
 
 
 
