@@ -2,13 +2,14 @@
 
 .data
 p_hex_digs byte "0123456789ABCDEF"
+p_ch2decascii_bffr byte 3 dup (?)  ; internal buffer used by char2decascii
 
 .code
 
 ; rcx:  the value to print (will be truncated to a max of 8 bits)
 ; rdx:  ptr to the first byte of the destination array
 ; returns:  ptr to one byte past the last written in the dest array
-; (will always be 8 bytes away from the starting ptr passed in rcx)
+; (will always be 8 bytes away from the starting ptr passed in rdx)
 char2binascii proc
 	push rdi  ; NB not using the shadow space (or, say, r9)
 	mov rdi, rdx
@@ -22,7 +23,7 @@ char2binascii proc
 		add al, '0'
 		stosb
 		dec cl
-	JGE write_bit
+	jge write_bit
 	mov rax, rdi
 	pop rdi
 	ret
@@ -32,7 +33,7 @@ char2binascii endp
 ; rcx:  the value to print (will be truncated to a max of 8 bits)
 ; rdx:  ptr to the first byte of the destination array
 ; returns:  ptr to one byte past the last written in the dest array
-; (will always be 2 bytes away from the starting ptr passed in rcx)
+; (will always be 2 bytes away from the starting ptr passed in rdx)
 char2hexascii proc
 	push rbx  ; once again not using the shadow space
 	lea rbx, p_hex_digs
@@ -55,7 +56,28 @@ char2hexascii proc
 char2hexascii endp
 
 
-
+; rcx:  the value to print (will be truncated to a max of 8 bits)
+; rdx:  ptr to the first byte of the destination array
+; returns:  ptr to one byte past the last written in the dest array
+; (will always be <= 3 bytes away from the starting ptr passed in rdx)
+char2decascii proc
+	mov rax, rcx
+	mov r9, 10
+	mov r8, rdx ; the destination array
+	;lea rdx, p_ch2decascii_bffr + lengthof p_ch2decascii_bffr
+	;lea r8, p_ch2decascii_bffr + lengthof p_ch2decascii_bffr
+	write_number:
+		inc rdx
+		mov ah,0
+		div r9b  ; quot in al, rem in ah
+		add ah, '0'
+		mov [rdx], ah
+		and al, al
+	jnz write_number
+	
+	mov rax, rdx
+	ret
+char2decascii endp
 
 
 

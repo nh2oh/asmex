@@ -8,17 +8,21 @@ includelib kernel32.lib
 ;);
 WriteConsoleA proto
 GetStdHandle proto
+ExitProcess proto
 char2binascii proto
 char2hexascii proto
+char2decascii proto
+
 
 ; constants
 const_stdout equ -11
 
 .data
-p_msg byte "Here is a message."
-p_spaces byte "    "
+p_msg byte "Here is a message !!"
+p_spaces byte "xxxx"
 p_binascii_dest byte 8 dup (?)
 p_hexascii_dest byte 2 dup (?)
+p_decascii_dest byte 8 dup (?)  ; probably only needs to be 3
 p_newln byte 0DH,0AH  ; \r\n
 h_stdout qword ?
 n_chars_written qword ?
@@ -97,6 +101,47 @@ main proc
 		call WriteConsoleA
 		add rsp, 40		
 		
+		
+		
+		
+		
+		
+		
+		
+		; Write 4 spaces
+		mov rcx, h_stdout
+		lea rdx, p_spaces
+		mov r8, lengthof p_spaces
+		lea r9, n_chars_written
+		sub rsp, 40
+		call WriteConsoleA
+		add rsp, 40
+		
+		; Fill the decascii buffer with the decascii for the present byte
+		mov rcx, [r12]  ; syntax ???? [] dereferences???
+		lea rdx, p_decascii_dest
+		sub rsp, 40
+		call char2decascii
+		add rsp, 40
+		
+		; Write the decascii buffer
+		mov rcx, h_stdout
+		lea rdx, p_decascii_dest
+		mov r8, lengthof p_decascii_dest
+		lea r9, n_chars_written
+		sub rsp, 40
+		call WriteConsoleA
+		add rsp, 40		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		; Write a line break
 		mov rcx, h_stdout
 		lea rdx, p_newln
@@ -110,6 +155,8 @@ main proc
 		cmp r12, r13
 	jne write_byte
 
+	mov rcx, 0
+	call ExitProcess
 main endp
 
 
