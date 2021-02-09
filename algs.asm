@@ -12,33 +12,72 @@
 ; dest_end = copy(src_beg, src_end, dest)
 ; rcx=src_begin;  rdx=src_end;  r8==dest_beg
 ; rax=dest_end
-; TODO:  If src_beg==src_end rcx will contain 0 at the start of next_byte
-; and the loop will iterate 2^64 times
-copy proc
+copy_bytes_lodb_stosb_and_loop proc
 	sub rdx,rcx  ;rdx == n, the number of chars to copy
 	mov rsi,rcx  ;rsi==src_beg
 	mov rdi,r8  ;rdi==dest_beg
 	mov rcx,rdx  ;rcx == n
-	mov r9, rcx  ;needed after the loop to compute dest_end
+	; rcx, rdx contain the number of chars to copy
+	cmp rcx,0  ;if src_beg==src_end, don't copy anything
+	jz exit
 	cld
 	next_byte:
-	lodsb  ;loads from rsi into rax (al) and increments rsi
-	stosb  ;stores from rax (al) into rdi and increments rdi
+		lodsb  ;loads from rsi into rax (al) and increments rsi
+		stosb  ;stores from rax (al) into rdi and increments rdi
 	loop next_byte
 	
-	add r8,r9
-	mov rax r8
+	exit:
+	add r8,rdx
+	mov rax, r8
 	ret
-copy endp
+copy_bytes_lodb_stosb_and_loop endp
+
+
+
+; dest_end = copy(src_beg, src_end, dest)
+; rcx=src_begin;  rdx=src_end;  r8==dest_beg
+; rax=dest_end
+copy_bytes proc
+	cmp rcx,rdx
+	je exit
+	
+	next_byte:
+		mov ax,[rcx]
+		mov [r8],ax
+		inc r8
+		inc rcx
+		cmp rcx,rdx
+	jne next_byte
+	
+	;r8 points one past the last byte copied into dest
+	exit:
+	mov rax,r8
+	ret
+copy_bytes endp
+
+
+; dest_beg = copy(src_beg, src_end, dest_end)
+; rcx=src_begin;  rdx=src_end;  r8==dest_end
+; rax=dest_beg
+; copies [src_beg,sec_end) into [dest_beg,dest_end), returns a ptr to dest_beg
+copy_bytes_backwards proc
+	cmp rcx,rdx
+	je exit
+	
+	next_byte:
+		dec rdx
+		mov ax,[rdx]
+		dec r8
+		mov [r8],ax
+		cmp rcx,rdx
+	jne next_byte
+	
+	;r8 points directly at the last byte copied into dest
+	exit:
+	mov rax,r8
+	ret
+copy_bytes_backwards endp
 
 
 
 end
-
-
-
-
-
-
-
-

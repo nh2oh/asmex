@@ -1,4 +1,4 @@
-; Similar to what is on p.89
+
 
 .data
 p_hex_digs byte "0123456789ABCDEF"
