@@ -1,18 +1,12 @@
-
-
 .data
 ;no data
 
-
-
 .code
-
-
 
 ; dest_end = copy(src_beg, src_end, dest)
 ; rcx=src_begin;  rdx=src_end;  r8==dest_beg
 ; rax=dest_end
-copy_bytes_lodb_stosb_and_loop proc
+copy_bytes_lodsb_stosb_and_loop proc
 	sub rdx,rcx  ;rdx == n, the number of chars to copy
 	mov rsi,rcx  ;rsi==src_beg
 	mov rdi,r8  ;rdi==dest_beg
@@ -30,7 +24,7 @@ copy_bytes_lodb_stosb_and_loop proc
 	add r8,rdx
 	mov rax, r8
 	ret
-copy_bytes_lodb_stosb_and_loop endp
+copy_bytes_lodsb_stosb_and_loop endp
 
 
 
@@ -78,6 +72,30 @@ copy_bytes_backwards proc
 	ret
 copy_bytes_backwards endp
 
+
+
+; rcx=beg; rdx=end
+; TODO:  BUGGY - pointers may cross in loop
+reverse_bytes_return_void proc
+	cmp rcx,rdx
+	je exit
+	dec rdx
+	cmp rcx,rdx
+	je exit
+	
+	loop_top:
+		mov rax,[rcx]
+		mov r8, [rdx]
+		mov [rcx],r8
+		mov [rdx],rax
+		inc rcx
+		dec rdx
+		cmp rcx,rdx
+	jne loop_top
+	
+	exit:
+	ret
+reverse_bytes_return_void endp
 
 
 end
