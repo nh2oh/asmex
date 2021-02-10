@@ -4,8 +4,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "fundamental_algorithms", "fundamental_algorithms\fundamental_algorithms.vcxproj", "{D6912FEC-9214-4585-8F0E-38C62DA98E42}"
+	ProjectSection(ProjectDependencies) = postProject
+		{ABE7CCA5-B2F5-4193-B420-F8B17843BC15} = {ABE7CCA5-B2F5-4193-B420-F8B17843BC15}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "unit_tests", "unit_tests\unit_tests.vcxproj", "{770DC422-5268-4D6F-BBCE-4735EBE2A183}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "algs", "algs\algs.vcxproj", "{ABE7CCA5-B2F5-4193-B420-F8B17843BC15}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +26,10 @@ Global
 		{770DC422-5268-4D6F-BBCE-4735EBE2A183}.Debug|x64.Build.0 = Debug|x64
 		{770DC422-5268-4D6F-BBCE-4735EBE2A183}.Release|x64.ActiveCfg = Release|x64
 		{770DC422-5268-4D6F-BBCE-4735EBE2A183}.Release|x64.Build.0 = Release|x64
+		{ABE7CCA5-B2F5-4193-B420-F8B17843BC15}.Debug|x64.ActiveCfg = Debug|x64
+		{ABE7CCA5-B2F5-4193-B420-F8B17843BC15}.Debug|x64.Build.0 = Debug|x64
+		{ABE7CCA5-B2F5-4193-B420-F8B17843BC15}.Release|x64.ActiveCfg = Release|x64
+		{ABE7CCA5-B2F5-4193-B420-F8B17843BC15}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
