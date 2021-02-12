@@ -118,7 +118,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <DisableLanguageExtensions>true</DisableLanguageExtensions>
-      <AdditionalIncludeDirectories>D:\cpp\nh2oh\asmex\extern\googletest\googletest\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\cpp\nh2oh\asmex\extern\googletest\googletest\include;D:\cpp\nh2oh\asmex\fundamental_algorithms\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -137,7 +137,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <DisableLanguageExtensions>true</DisableLanguageExtensions>
-      <AdditionalIncludeDirectories>D:\cpp\nh2oh\asmex\extern\googletest\googletest\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\cpp\nh2oh\asmex\extern\googletest\googletest\include;D:\cpp\nh2oh\asmex\fundamental_algorithms\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -149,7 +149,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="test_vector.cpp" />
+    <ClCompile Include="test_copy.cpp" />
+    <ClCompile Include="test_reverse.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\algs\algs.vcxproj">
+      <Project>{abe7cca5-b2f5-4193-b420-f8b17843bc15}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

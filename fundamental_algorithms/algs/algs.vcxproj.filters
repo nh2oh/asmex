@@ -21,6 +21,9 @@
     <ClInclude Include="dummy_func.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="copy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dummy_func.cpp">
@@ -29,6 +32,9 @@
   </ItemGroup>
   <ItemGroup>
     <MASM Include="reverse.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+    <MASM Include="copy.asm">
       <Filter>Source Files</Filter>
     </MASM>
   </ItemGroup>

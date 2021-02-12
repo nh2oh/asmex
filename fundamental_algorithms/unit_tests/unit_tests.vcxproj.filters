@@ -15,7 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="test_vector.cpp">
+    <ClCompile Include="test_reverse.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test_copy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

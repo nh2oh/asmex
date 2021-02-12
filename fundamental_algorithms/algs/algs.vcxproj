@@ -144,11 +144,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <MASM Include="copy.asm" />
     <MASM Include="reverse.asm">
       <FileType>Document</FileType>
     </MASM>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="copy.h" />
     <ClInclude Include="dummy_func.h" />
     <ClInclude Include="reverse.h" />
   </ItemGroup>
