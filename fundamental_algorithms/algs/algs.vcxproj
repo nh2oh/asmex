@@ -148,11 +148,13 @@
     <MASM Include="reverse.asm">
       <FileType>Document</FileType>
     </MASM>
+    <MASM Include="swap.asm" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="copy.h" />
     <ClInclude Include="dummy_func.h" />
     <ClInclude Include="reverse.h" />
+    <ClInclude Include="swap.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dummy_func.cpp" />

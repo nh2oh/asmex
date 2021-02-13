@@ -62,7 +62,9 @@ copy_64 proc
 	mov rsi, rcx  ; rsi == src_beg
 	mov rdi, r8  ; rdi == dest_beg
 
-	; compute the number of iterations into rcx
+	; compute the number of iterations into rcx.  The pointers on the prototype
+	; for this function are std::uint64_t* so rcx should always hold a multiple
+	; of 8.  
 	mov rcx, rdx ; rcx = src_end
 	sub rcx, rsi  ; rcx -= src_beg (=> rcx == src_end-src_beg)
 	shr rcx, 3
@@ -77,6 +79,7 @@ copy_64 proc
 	
 	ret
 copy_64 endp
+
 
 
 ; dest_beg = copy_bytes_backwards(src_beg, src_end, dest_end)
@@ -101,6 +104,12 @@ copy_bytes_backwards proc
 	ret
 copy_bytes_backwards endp
 
+
+; opaque_function(p1,p2)
+; does nothing
+opaque_function proc
+	ret
+opaque_function endp
 
 
 end

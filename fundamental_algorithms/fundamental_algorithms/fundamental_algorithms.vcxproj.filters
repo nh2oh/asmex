@@ -18,9 +18,21 @@
     <ClCompile Include="fundamental_algorithms.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="copy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="swap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="print_helpers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="copy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="swap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

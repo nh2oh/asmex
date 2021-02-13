@@ -151,6 +151,7 @@
   <ItemGroup>
     <ClCompile Include="test_copy.cpp" />
     <ClCompile Include="test_reverse.cpp" />
+    <ClCompile Include="test_swap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\algs\algs.vcxproj">

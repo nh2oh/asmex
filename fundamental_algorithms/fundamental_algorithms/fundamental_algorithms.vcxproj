@@ -147,7 +147,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="copy.cpp" />
     <ClCompile Include="fundamental_algorithms.cpp" />
+    <ClCompile Include="swap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\algs\algs.vcxproj">
@@ -155,7 +157,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="copy.h" />
     <ClInclude Include="print_helpers.h" />
+    <ClInclude Include="swap.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -5,9 +5,14 @@
 #include "algs\reverse.h"
 #include "algs\dummy_func.h"
 #include "print_helpers.h"
-
+#include "copy.h"
+#include "swap.h"
 
 int main() {
+	benchmark_swap();
+	//benchmark_copy();
+
+	/*
 	std::string msg = "Hello World!";
 	std::cout << msg << '\n';
 	
@@ -22,7 +27,7 @@ int main() {
 	std::cout << '\n';
 	reverse_ui64_return_void(vui64.data(),vui64.data()+vui64.size());
 	print_csv(vui64.begin(),vui64.end());
-
+	*/
 
 	return 0;
 }

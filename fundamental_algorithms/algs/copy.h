@@ -8,4 +8,6 @@ extern "C" {
 	std::uint64_t* copy_64(const std::uint64_t*, const std::uint64_t*, std::uint64_t*);
 
 	char* copy_bytes_backwards(const char*, const char*, char*);
+
+	void opaque_function(void*,void*);
 }

@@ -21,5 +21,8 @@
     <ClCompile Include="test_copy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="test_swap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
