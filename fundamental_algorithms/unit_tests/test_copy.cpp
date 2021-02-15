@@ -19,6 +19,25 @@ TEST(copy_bytes, VectorChar) {
 		EXPECT_EQ(v_src[i],v_dest[i]);
 	}
 }
+TEST(copy_bytes, VectorCharPartialCopy) {
+	int num_to_copy = 2;
+	std::vector<char> v_src {'a','b','c','d','e'};
+	std::vector<char> v_dest(v_src.size(),'x');
+	auto p_src_beg = v_src.data();
+	auto p_src_end = p_src_beg + num_to_copy;
+	auto p_dest_beg = v_dest.data();
+	auto p_dest_end = p_dest_beg + num_to_copy;
+
+	auto return_value = copy_bytes(p_src_beg,p_src_end,p_dest_beg);
+
+	EXPECT_EQ(return_value,p_dest_end);
+	for (int i=0; i<num_to_copy; ++i) {
+		EXPECT_EQ(v_src[i],v_dest[i]);
+	}
+	for (int i=num_to_copy; i<v_src.size(); ++i) {
+		EXPECT_EQ(v_dest[i],'x');
+	}
+}
 
 TEST(copy_bytes, VectorInt32) {
 	std::vector<std::int32_t> v_src {'a','b','c','d','e'};

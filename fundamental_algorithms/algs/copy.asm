@@ -35,8 +35,8 @@ copy_bytes proc
 	je exit
 	
 	next_byte:
-		mov ax,[rcx]
-		mov [r8],ax
+		mov al,[rcx]
+		mov [r8],al
 		inc r8
 		inc rcx
 		cmp rcx,rdx
