@@ -18,20 +18,15 @@
     <ClInclude Include="reverse.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="dummy_func.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="copy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="swap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="dummy_func.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClInclude Include="utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <MASM Include="reverse.asm">
@@ -43,5 +38,11 @@
     <MASM Include="swap.asm">
       <Filter>Source Files</Filter>
     </MASM>
+    <MASM Include="utils.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

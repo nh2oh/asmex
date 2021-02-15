@@ -1,5 +1,6 @@
 #include "algs\swap.h"
-#include "algs\copy.h"  // opaque_function()
+#include "algs\copy.h"
+#include "algs\utils.h"
 #include <vector>
 #include <random>
 #include <chrono>

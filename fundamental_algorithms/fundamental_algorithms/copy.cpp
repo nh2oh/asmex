@@ -1,5 +1,6 @@
 #include "copy.h"
 #include "algs\copy.h"
+#include "algs\utils.h"
 #include <vector>
 #include <random>
 #include <chrono>

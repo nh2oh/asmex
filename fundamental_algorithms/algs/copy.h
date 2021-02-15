@@ -9,5 +9,5 @@ extern "C" {
 
 	char* copy_bytes_backwards(const char*, const char*, char*);
 
-	void opaque_function(void*,void*);
+	
 }

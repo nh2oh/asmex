@@ -3,10 +3,10 @@
 #include <cstdint>
 #include <vector>
 #include "algs\reverse.h"
-#include "algs\dummy_func.h"
 #include "print_helpers.h"
 #include "copy.h"
 #include "swap.h"
+
 
 int main() {
 	benchmark_swap();
