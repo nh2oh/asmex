@@ -145,6 +145,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <MASM Include="copy.asm" />
+    <MASM Include="math.asm" />
     <MASM Include="reverse.asm">
       <FileType>Document</FileType>
     </MASM>
@@ -153,6 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="copy.h" />
+    <ClInclude Include="math.h" />
     <ClInclude Include="reverse.h" />
     <ClInclude Include="swap.h" />
     <ClInclude Include="utils.h" />
