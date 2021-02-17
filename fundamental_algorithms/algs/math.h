@@ -11,5 +11,15 @@ extern "C" {
 		std::uint64_t high;
 	};
 	multiply_u64_t multiply_u64_highlow(std::uint64_t,std::uint64_t);
+
+	struct multiply_i64_t {
+		std::int64_t low;
+		std::int64_t high;
+	};
+	multiply_u64_t multiply_i64_highlow(std::int64_t,std::int64_t);
+
+
+	bool is_pow2_ui64ref_return_bool(const std::uint64_t&);
+
 }
 

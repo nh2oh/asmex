@@ -144,6 +144,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <MASM Include="bits.asm" />
     <MASM Include="copy.asm" />
     <MASM Include="math.asm" />
     <MASM Include="reverse.asm">
@@ -153,6 +154,7 @@
     <MASM Include="utils.asm" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="bits.h" />
     <ClInclude Include="copy.h" />
     <ClInclude Include="math.h" />
     <ClInclude Include="reverse.h" />

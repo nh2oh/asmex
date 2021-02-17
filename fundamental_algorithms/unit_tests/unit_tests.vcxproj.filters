@@ -27,5 +27,8 @@
     <ClCompile Include="test_math.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="test_bits.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
