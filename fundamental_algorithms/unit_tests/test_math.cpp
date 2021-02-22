@@ -121,6 +121,50 @@ TEST(multiply_u64_highlow, OverflowingParameters) {
 	}
 }
 
+TEST(multiply_i64_highlow, NonOverflowingParameters) {
+	struct multiply_tests_t {
+		std::int64_t a;
+		std::int64_t b;
+	};
+	std::vector<multiply_tests_t> tests {
+		{std::numeric_limits<std::int64_t>::max(),0},
+		{0,std::numeric_limits<std::int64_t>::max()},
+		{0,0},
+		{1,1},
+		{1,2},{-1,2},{1,-2},{-1,-2},
+		{2,2},{-2,2},{2,-2},{-2,-2},
+		{2,3},{-2,3},{2,-3},{-2,-3},
+		{3,2},{-3,2},{3,-2},{-3,-2},
+		{3,3},{-3,3},{3,-3},{-3,-3},
+		// The largest multiple of 2 is max()-1; hence multiplying half of that by
+		// 2 should not overflow
+		{(std::numeric_limits<std::int64_t>::max()-1)/2,2},
+		{2,(std::numeric_limits<std::int64_t>::max()-1)/2},
+		// Product of (::min()-1)/2 with 2 and -2
+		{(std::numeric_limits<std::int64_t>::min()-1)/2,2},
+		{2,(std::numeric_limits<std::int64_t>::min()-1)/2},
+		{(std::numeric_limits<std::int64_t>::min()-1)/2,-2},
+		{-2,(std::numeric_limits<std::int64_t>::min()-1)/2},
+		// The product of ::min() and 1 obviously does not oveflow.  Note however, 
+		// that the product of ::min() and  -1 _will_ overflow.  
+		{std::numeric_limits<std::int64_t>::min(),1},
+		{1,std::numeric_limits<std::int64_t>::min()}
+	};
+
+	for (int i=0; i<tests.size(); ++i) {
+		multiply_i64_t curr_ans;
+		curr_ans.low = (tests[i].a)*(tests[i].b);
+		if (curr_ans.low < 0) {
+			curr_ans.high = -1;
+		} else {
+			curr_ans.high = 0;
+		}
+		auto curr_result = multiply_i64_highlow(tests[i].a,tests[i].b);
+		EXPECT_EQ(curr_ans.low,curr_result.low);
+		EXPECT_EQ(curr_ans.high,curr_result.high);
+	}
+}
+
 TEST(is_pow2_ui64ref_return_bool, TrueAndFalseValues) {
 	std::vector<std::uint64_t> not_pow_2s {
 		0,3,5,6,7,9,10,11,12,13,14,15,
